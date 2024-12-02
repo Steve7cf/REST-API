@@ -16,13 +16,9 @@ const login = async(req, res) => {
     }
 
     // compare password
-    console.log(user.password)
-    const isMatch = await bcrypt.compare(user.password, password)
-    if(!isMatch){
-      throw new Error("Wrong Password")
-    }
-    res.send(isMatch)
-    
+    const match = await bcrypt.compare(user.password, password)
+    console.log(match)
+
   }catch(err){
     res.json({error:err.message})
   }
@@ -31,7 +27,8 @@ const login = async(req, res) => {
 // signup logic
 const signup = async(req, res) => {
   const {username, email, password} = req.body
-  const hashedPassword = await bcrypt.hash(password, 10)
+  const salt = await bcrypt.genSalt()
+  const hashedPassword = await bcrypt.hash(password, salt)
 
   try {
       const newUser = await model.create({username:username, email:email, password:hashedPassword})
