@@ -1,0 +1,17 @@
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email":"stephanbazaar@gmail.com",
+    "password":"admin"
+}
+
+###
+POST http://localhost:3000/signup
+Content-Type: application/json
+
+{
+    "username":"darkcoder",
+    "email":"stephanbazaar@gmail.com",
+    "password":"admin"
+}
