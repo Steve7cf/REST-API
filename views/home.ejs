@@ -98,7 +98,7 @@
             </li>
 
             <li>
-              <a href="#">
+              <a href="/logout">
                 <span><i class="fa fa-sign-out"></i></span>
                 <span class="nav-label">Logout</span>
               </a>
@@ -110,5 +110,13 @@
 
     <script defer src="icons/js/all.js"></script>
     <script defer src="js/main.js"></script>
+
+    <script>
+      const logout = document.querySelector('.nav-label')
+
+      logout.addEventListener('click', () => {
+        alert('logout')
+      })
+    </script>
   </body>
 </html>

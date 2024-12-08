@@ -7,6 +7,8 @@ const session = require('express-session')
 const mongodbSession = require('connect-mongodb-session')(session)
 const path = require('path')
 const logger = require('morgan')
+const flash = require('connect-flash')
+
 
 // session
 const store = new mongodbSession({
@@ -35,6 +37,7 @@ app.use(session({
 }))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(logger('dev'))
+app.use(flash())
 
 // routes
 const routes = require('./src/routes/users')

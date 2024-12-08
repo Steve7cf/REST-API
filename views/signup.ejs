@@ -6,7 +6,10 @@
         </span>
     </div>
 <!-- form -->
-    <form action="/create" method="post" target="_blank">
+    <form action="/create" method="post" target="_parent">
+        <% if (info.length > 0) { %>
+            <span class="error"><%= info %></span>
+            <% } %>
         <div class="wrapper">
             <div class="input-field">
                 <input type="text" placeholder="user name" name="username">

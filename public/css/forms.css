@@ -75,6 +75,15 @@ form{
     font-weight: 700;
     font-family: sans-serif;
 }
+.error{
+    color: orange;
+    display: block;
+    font-family: sans-serif;
+    font-size: 1rem;
+    text-transform: capitalize;
+    font-weight: 700;
+    text-align: center;
+}
 
 @media (max-width: 1024px){
     .form-container{
