@@ -14,7 +14,6 @@ const userModel = new mongoose.Schema({
     },
     password:{
         type:String,
-        lowercase:true,
         required:[true, "Please Enter Password"],
         unique:[true, "Name Already Taken"],
         minlength:[6, "Password too short"]

@@ -57,14 +57,6 @@ nav li a:hover {
     transform: scale(1.1);
 }
 
-/* Responsive Navigation */
-@media (max-width: 768px) {
-    nav li {
-        float: none;
-        display: inline-block;
-    }
-}
-
 .hero {
     height: 100vh;
     display: flex;
@@ -90,18 +82,22 @@ nav li a:hover {
 }
 
 .hero button {
-    background-color: #333;
+    background: linear-gradient(to right, #151a2d, #2c365e);
     color: #fff;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
     transition: background-color 0.3s ease-in-out;
     animation: fadeInUp 1.4s ease-in-out;
+    width: 15rem;
+    border: none;
+    padding: 1rem;
+    font-size: medium;
+    border-radius: 0.5rem;
+    text-transform: capitalize;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.16);
+    transition: .4s ease;
 }
 
 .hero button:hover {
-    background-color: #444;
+    background: linear-gradient(to left, #151a2d, #2c365e);
 }
 
 @keyframes fadeInUp {
@@ -116,11 +112,21 @@ nav li a:hover {
 }
 
 /* Responsive Hero Section */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+    nav li {
+        float: none;
+        opacity: 0;
+        pointer-events: none;
+    }
+    nav a::after{
+        content: 'darkCoder';
+        font-size: 1.3rem;
+        margin-left: 1rem;
+    }
     .hero h1 {
-        font-size: 32px;
+        font-size: 1.9rem;
     }
     .hero p {
-        font-size: 20px;
+        font-size: 1rem;
     }
 }

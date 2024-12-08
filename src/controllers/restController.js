@@ -18,19 +18,39 @@ const auth = async(req, res) => {
       throw new Error("No User Found!")
     }
 
-    // compare password
-    const match = await bcrypt.compare(user.password, password)
-    console.log(match)
+    await bcrypt.compare(password, user.password, async (err, valid) => {
+      if(err){
+        throw new Error("Internal Error Occured!")
+      }
+      if(valid){
+         jwt.sign({id:user.id},process.env.ACCESS_TOKEN, {expiresIn:60 * 1000}, (err, token) =>{
+          if(err){
+            throw new Error("Internal Error Occured!")
+          }
+
+          if(token){
+            res.cookie('token',token , {maxAge:60 * 1000, secure:false, httpOnly:true})
+            res.auth = true  
+            return res.redirect("/home")
+          }
+        })
+      }
+      if(!valid){
+        throw new Error("Invalid Password!")
+      }
+    })
+
 
   }catch(err){
     res.json({error:err.message})
+    return res.redirect('/login')
   }
 }
 
 // signup logic
 const create = async(req, res) => {
   const {username, email, password} = req.body
-  const salt = await bcrypt.genSalt()
+  const salt = await bcrypt.genSalt(10)
   const hashedPassword = await bcrypt.hash(password, salt)
 
   try {
@@ -38,9 +58,10 @@ const create = async(req, res) => {
       if(!newUser){
         throw new Error('Internal Server error')
       }
-      res.json(newUser)
+      return res.redirect("/login")
   } catch (err) {
     res.json({error:err.message})
+    return res.redirect('/signup')
   }
 }
 
