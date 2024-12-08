@@ -3,15 +3,15 @@ Content-Type: application/json
 
 {
     "email":"stephanbazaar@gmail.com",
-    "password":"admin"
+    "password":"123456"
 }
 
 ###
-POST http://localhost:3000/signup
+POST http://localhost:3000/create
 Content-Type: application/json
 
 {
     "username":"darkcoder",
-    "email":"stephanbazaar@gmail.com",
+    "email":"stephanbazaar99@gmail.com",
     "password":"admin"
 }

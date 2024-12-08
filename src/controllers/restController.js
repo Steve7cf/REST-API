@@ -13,21 +13,25 @@ const auth = async(req, res) => {
   const{email, password} = req.body
 
   try{
+    // find user using email
     const user = await model.findOne({email:email})
     if(!user){
       throw new Error("No User Found!")
     }
 
+    // compare hash and password
     await bcrypt.compare(password, user.password, async (err, valid) => {
       if(err){
         throw new Error("Internal Error Occured!")
       }
       if(valid){
+        // create jwt token
          jwt.sign({id:user.id},process.env.ACCESS_TOKEN, {expiresIn:60 * 1000}, (err, token) =>{
+          // look for errors in jwt creation
           if(err){
             throw new Error("Internal Error Occured!")
           }
-
+          //create cookie and sessions and redirect to home
           if(token){
             res.cookie('token',token , {maxAge:60 * 1000, secure:false, httpOnly:true})
             res.auth = true  
