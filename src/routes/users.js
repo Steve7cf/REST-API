@@ -4,9 +4,12 @@ const rest = require('../controllers/restController')
 
 // get routes
 route.get('/', rest.index)
+route.get("/home", rest.home)
+route.get("/login", rest.login)
+route.get("/signup", rest.signup)
 
 // post
-route.post("/login", rest.login)
-route.post("/signup", rest.signup)
+route.post("/auth", rest.auth)
+route.post("/create", rest.create)
 
 module.exports = route

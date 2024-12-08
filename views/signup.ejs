@@ -1,0 +1,25 @@
+<%- include('partials/header.ejs'); %>
+<div class="signup-container">
+    <h2>Sign Up</h2>
+    <form>
+        <div class="input-field">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" placeholder="Username">
+        </div>
+        <div class="input-field">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" placeholder="Email">
+        </div>
+        <div class="input-field">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" placeholder="Password">
+        </div>
+        <div class="input-field">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" placeholder="Confirm Password">
+        </div>
+        <button type="submit">Sign Up</button>
+        <p>Already have an account? <a href="#">Log In</a></p>
+    </form>
+</div>
+<%- include('partials/footer.ejs'); %>

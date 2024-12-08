@@ -1,0 +1,26 @@
+<%- include('partials/header.ejs'); %>
+<div class="form-container">
+    <div class="logo">
+        <i class="fa fa-code"></i>
+    </div>
+
+    <form>
+        <div class="wrapper">
+            <div class="input-field">
+                <span><i class="fa-solid fa-envelope"></i></span>
+                <input type="email" placeholder="Email">
+            </div>
+    
+            <div class="input-field">
+                <span><i class="fa-solid fa-lock"></i></span>
+                <input type="password" placeholder="Password">
+            </div>
+        </div>
+
+        <button type="submit">Login</button>
+
+        <p>Don't have an account? <a href="/signup">Sign Up</a></p>
+    </form>
+
+</div>
+<%- include('partials/footer.ejs'); %>

@@ -4,9 +4,12 @@ const jwt = require('jsonwebtoken')
 
 // index page
 const index = (req, res) => {res.render('index')};
+const home = (req, res) => {res.render('home')}
+const login = (req, res) => {res.render('login')}
+const signup = (req, res) => {res.render('signup')}
 
 // login logic
-const login = async(req, res) => {
+const auth = async(req, res) => {
   const{email, password} = req.body
 
   try{
@@ -25,7 +28,7 @@ const login = async(req, res) => {
 }
 
 // signup logic
-const signup = async(req, res) => {
+const create = async(req, res) => {
   const {username, email, password} = req.body
   const salt = await bcrypt.genSalt()
   const hashedPassword = await bcrypt.hash(password, salt)
@@ -45,5 +48,8 @@ const signup = async(req, res) => {
 module.exports = {
   index,
   login,
-  signup
+  signup,
+  home,
+  auth,
+  create
 };
