@@ -1,2 +1,1 @@
-still under development 
-i stopped due to the error i have been facing with the bcrypt as it return false though the password matches
+it's just an online community project :] sharing resources and thought
