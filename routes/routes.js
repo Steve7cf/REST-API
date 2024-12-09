@@ -1,6 +1,6 @@
 const express = require('express')
 const route = express.Router()
-const rest = require('../controllers/restController')
+const rest = require('../controller/controller')
 
 // get routes
 route.get('/', rest.index)

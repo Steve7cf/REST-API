@@ -40,7 +40,7 @@ app.use(logger('dev'))
 app.use(flash())
 
 // routes
-const routes = require('./src/routes/users')
+const routes = require('./routes/routes')
 app.use('/', routes)
 
 // exporting app to bin
