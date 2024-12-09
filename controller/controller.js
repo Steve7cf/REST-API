@@ -26,7 +26,8 @@ const login = (req, res) => {
 
 // signup page
 const signup = (req, res) => {
-  res.render("signup");
+  const info = req.flash('message')
+  res.render("signup", {info});
 };
 
 // login logic
@@ -86,6 +87,13 @@ const auth = async (req, res) => {
 // signup logic
 const create = async (req, res) => {
   const { username, email, password } = req.body;
+
+  // check if password is not null
+  if(password === ''){
+    req.flash("message", "Please Enter Password")
+    return res.redirect("/signup")
+  }
+
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
 
@@ -101,7 +109,15 @@ const create = async (req, res) => {
     }
     return res.redirect("/login");
   } catch (err) {
-    req.flash("message", "Internal Error!")
+    if(err.code === 11000){
+      const key = Object.keys(err.keyValue)
+      const value = Object.values(err.keyValue)
+
+      req.flash('message', `${key} ${value} already taken`)
+    }else{
+      const obj = Object.values(err)[0]
+      req.flash('message', `${Object.values(obj)[0].properties.message}`)
+    }
     return res.redirect("/signup")
   }
 };
